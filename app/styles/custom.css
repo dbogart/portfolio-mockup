@@ -15,4 +15,31 @@
 	border-top: 7px solid #173241;
 	border-bottom: 4px outset #aaaaaa;
 	width: 100%;
+	padding: 10px 0 10px 0;
+}
+
+.nav-links {
+	display: block;
+	margin: 5px;
+	font-size: 15px;
+	color: #686868;
+	font-weight: bold;
+}
+
+.navbar-nav > li > a {
+	color: #686868;
+}
+
+.nav-btn {
+	color: white;
+	font-size: 12px;
+	margin: 5px;
+}
+
+.logout {
+	background-color: #e3630a;
+}
+
+.account {
+	background-color: #27a0da;
 }
