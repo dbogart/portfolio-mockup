@@ -7,11 +7,11 @@
 			<div class='panel-body'>
 
 				<ul class="nav nav-tabs">
-				  <li role="presentation" class="active"><a href="#">Portfolio 1</a></li>
-				  <li role="presentation"><a href="#">Portfolio 2</a></li>
-				  <li role="presentation"><a href="#">Portfolio 3</a></li>
-				  <li role="presentation"><a href="#">Portfolio 4</a></li>
-				  <li role="presentation"><a href="#">Portfolio 5</a></li>
+					<li role="presentation" class="active"><a href="#">Portfolio 1</a></li>
+					<li role="presentation"><a href="#">Portfolio 2</a></li>
+					<li role="presentation"><a href="#">Portfolio 3</a></li>
+					<li role="presentation"><a href="#">Portfolio 4</a></li>
+					<li role="presentation"><a href="#">Portfolio 5</a></li>
 				</ul>
 
 				<h3><a href='#'>Portfolio 1</a></h3>
@@ -28,14 +28,8 @@
 							<div class='panel-heading'>
 								<h4 class='panel-title'>Search Results</h4>
 							</div>
-							<div class='panel-body'>
-								<p>Actavis <btn class='btn btn-sm btn-primary pull-right'>Add</btn></p>
-								<br>
-								<p>Arava <btn class='btn btn-sm btn-primary pull-right'>Add</btn></p>
-								<br>
-								<p>Avacor <btn class='btn btn-sm btn-primary pull-right'>Add</btn></p>
-								<br>
-								<p>Avagard <btn class='btn btn-sm btn-primary pull-right'>Add</btn></p>
+							<div class='panel-body' ng-repeat='item in portItems | filter: search' >
+								<p>{{ item }} <btn class='btn btn-sm btn-primary pull-right' ng-click='addToPortfolio($index)'>Add</btn></p>
 							</div>
 						</div>
 					</div>
@@ -50,14 +44,10 @@
 										<th>Product/Company</th>
 										<th>Headline</th>
 									</thead>
-									<tbody>
+									<tbody ng-repeat='event in events'>
 										<tr>
-											<td><a href='#'>Avacor</a></td>
-											<td><a href='#'>Docetaxel Drug Label Update: A Comparative Safety Analysis</a></td>
-										</tr>
-										<tr>
-											<td><a href='#'>Arava</a></td>
-											<td><a href='#'>AEI Analysis Produces Skin Cancer Safety Signal for Xeljanz Prior to FDA Safety Alert</a></td>
+											<td><a href='#'>{{ event.product }}</a></td>
+											<td><a href='#'>{{ event.headline }}</a></td>
 										</tr>
 									</tbody>
 								</table>
@@ -71,12 +61,8 @@
 							<div class='panel-heading'>
 								<h4 class='panel-title'>Portfolio Companies</h4>
 							</div>
-							<div class='panel-body'>	
-								<p>Regeneron <btn class='btn btn-sm btn-warning pull-right'>Delete</btn></p>
-								<br>
-								<p>Biogen <btn class='btn btn-sm btn-warning pull-right'>Delete</btn></p>
-								<br>
-								<p>Celgene <btn class='btn btn-sm btn-warning pull-right'>Delete</btn></p>
+							<div class='panel-body' ng-repeat='company in companies'>	
+								<p>{{ company }} <btn class='btn btn-sm btn-warning pull-right' ng-click='removeFromPortfolio($index)'>Delete</btn></p>
 							</div>
 						</div>
 					</div>
@@ -85,12 +71,8 @@
 							<div class='panel-heading'>
 								<h4 class='panel-title'>Portfolio Drugs</h4>
 							</div>
-							<div class='panel-body'>		
-								<p>Avandia<btn class='btn btn-sm btn-warning pull-right'>Delete</btn></p>
-								<br>
-								<p>Avastin<btn class='btn btn-sm btn-warning pull-right'>Delete</btn></p>
-								<br>
-								<p>Ambien<btn class='btn btn-sm btn-warning pull-right'>Delete</btn></p>
+							<div class='panel-body' ng-repeat='drug in drugs'>		
+								<p>{{ drug }}<btn class='btn btn-sm btn-warning pull-right' ng-click='removeDrugFromPortfolio($index)'>Delete</btn></p>
 							</div>
 						</div>
 					</div>
