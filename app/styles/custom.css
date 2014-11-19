@@ -1,0 +1,18 @@
+.panel-bg {
+	background-color: #eb9b2d !important;
+}
+
+.port-title {
+	font-weight: 500;
+	color: white;
+}
+
+.panel-pad {
+	padding: 20px;
+}
+
+.nav-content {
+	border-top: 7px solid #173241;
+	border-bottom: 4px outset #aaaaaa;
+	width: 100%;
+}

@@ -8,24 +8,31 @@
  *
  * Main module of the application.
  */
-angular
+
+var app;
+app = angular
   .module('portfolioMockupApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/portfolio', {
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioCtrl'
       })
       .otherwise({
         redirectTo: '/'
