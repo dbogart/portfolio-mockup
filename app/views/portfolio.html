@@ -5,16 +5,11 @@
 				<h1 class='port-title'>Portfolios</h1>
 			</div>
 			<div class='panel-body'>
-
-				<ul class="nav nav-tabs">
-					<li role="presentation" class="active"><a href="#">Portfolio 1</a></li>
-					<li role="presentation"><a href="#">Portfolio 2</a></li>
-					<li role="presentation"><a href="#">Portfolio 3</a></li>
-					<li role="presentation"><a href="#">Portfolio 4</a></li>
-					<li role="presentation"><a href="#">Portfolio 5</a></li>
-				</ul>
-
-				<h3><a href='#'>Portfolio 1</a></h3>
+				<tabset>
+					<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active">
+						<h3><a href='#' editable-text='tab.content'>{{ tab.content || "empty" }}</a></h3>
+					</tab>
+				</tabset>
 				<br>
 				<div class='row'>
 					<div class='col-md-6'>
