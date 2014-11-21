@@ -8,47 +8,42 @@
  * Controller of the portfolioMockupApp
  */
 angular.module('portfolioMockupApp')
-  .controller('PortfolioCtrl', function ($scope) {
-    $scope.portItems = [
-      'Actavis',
-      'Arava',
-      'Avacor',
-      'Avagard'
-    ];
-    $scope.companies = [
-      'Regeneron',
-      'Biogen',
-      'Celgene'
-    ];
-    $scope.drugs = [
-      'Avandia',
-      'Avastin',
-      'Ambien'
-    ];
-    $scope.events = [
-      	{ product: 'Avastin', headline: 'Docetaxel Drug Label Update: A Comparative Safety Analysis' },
-      	{ product: 'Arava', headline: 'AEI Analysis Produces Skin Cancer Safety Signal for Xeljanz Prior to FDA Safety Alert' },
-      	{ product: 'Ambien', headline: 'Safety Labeling Changes' }
-    ];
+  .controller('PortfolioCtrl', function ($scope, portService, $stateParams, $state) {
+    
+    $scope.portId = $stateParams.portId;
+
+    $scope.$on('$stateChangeSuccess', function () {
+
+        $scope.results = portService.results($state.params.portId);
+        $scope.companies = portService.companies($state.params.portId);
+        $scope.drugs = portService.drugs($state.params.portId);
+        $scope.events = portService.events($state.params.portId);
+
+    });
+        
 	$scope.addToPortfolio = function (index) {
-        $scope.companies.push($scope.portItems[index]);
-        $scope.portItems.splice(index, 1);
+        $scope.companies.push($scope.results[index]);
+        $scope.results.splice(index, 1);
     };
 	$scope.removeFromPortfolio = function (index) {
-        $scope.portItems.push($scope.companies[index]);
+        $scope.results.push($scope.companies[index]);
         $scope.companies.splice(index, 1);
     };
 	$scope.removeDrugFromPortfolio = function (index) {
-        $scope.portItems.push($scope.drugs[index]);
+        $scope.results.push($scope.drugs[index]);
         $scope.drugs.splice(index, 1);
     };
 	$scope.tabs = [
-		{ title:'Portfolio 1', content:'Portfolio 1' },
-		{ title:'Portfolio 2', content:'Portfolio 2' },
-		{ title:'Portfolio 3', content:'Portfolio 3' },
-		{ title:'Portfolio 4', content:'Portfolio 4' },
-		{ title:'Portfolio 5', content:'Portfolio 5' },
+		{ title:'Portfolio 1', id: '1', active: false },
+		{ title:'Portfolio 2', id: '2', active: false },
+		{ title:'Portfolio 3', id: '3', active: false },
+		{ title:'Portfolio 4', id: '4', active: false },
+		{ title:'Portfolio 5', id: '5', active: false },
 	];
 
+    //function loops through each tab to check if current state matches that tab. if so, tab is set to active, which reflects in view
+    $scope.tabs.forEach(function (tab) {
+         tab.active = ($state.params.portId === tab.id);
+    });
 });
 

@@ -15,29 +15,43 @@ app = angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'xeditable'
+    'xeditable',
+    'ui.router',
+    'portfolioMockupApp.services'
   ])
-	.config(function ($routeProvider) {
-	$routeProvider
-	  .when('/', {
-	    templateUrl: 'views/portfolio.html',
-	    controller: 'PortfolioCtrl'
-	  })
-	  .when('/about', {
-	    templateUrl: 'views/about.html',
-	    controller: 'AboutCtrl'
-	  })
-	  .when('/portfolio', {
-	    templateUrl: 'views/portfolio.html',
-	    controller: 'PortfolioCtrl'
-	  })
-	  .otherwise({
-	    redirectTo: '/'
-	  });
+	.config(function($stateProvider, $urlRouterProvider) {
+
+  	// For any unmatched url, redirect to /portfolio
+	$urlRouterProvider.otherwise('/portfolio');
+
+	// States
+	$stateProvider
+	.state('portfolio', {
+		url: '/portfolio',
+		templateUrl: 'views/portfolio.html',
+		controller: 'PortfolioCtrl',
+	})
+	.state('portfolio.port', {
+	    url: '/port/:portId',
+	    stateParams: '@portId',
+	    views: {
+	        'results': {
+	            templateUrl: 'partials/results.html'
+	        },
+	        'events': {
+	            templateUrl: 'partials/events.html'
+	        },
+	        'companies': {
+	            templateUrl: 'partials/companies.html'
+	        },
+	        'drugs': {
+	            templateUrl: 'partials/drugs.html'
+	        }
+	    } 
+	});
 	})
 	.run(function(editableOptions) {
 		editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'

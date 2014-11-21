@@ -6,8 +6,8 @@
 			</div>
 			<div class='panel-body'>
 				<tabset>
-					<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active">
-						<h3><a href='#' editable-text='tab.content'>{{ tab.content || "empty" }}</a></h3>
+					<tab ng-repeat="tab in tabs" heading="{{ tab.title }}" ui-sref="portfolio.port({portId: tab.id})" active="tab.active">
+						<h3><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
 					</tab>
 				</tabset>
 				<br>
@@ -18,59 +18,12 @@
 				</div>
 				<br>
 				<div class='row'>
-					<div class='col-md-6'>
-						<div class='panel panel-default'>
-							<div class='panel-heading'>
-								<h4 class='panel-title'>Search Results</h4>
-							</div>
-							<div class='panel-body' ng-repeat='item in portItems | filter: search' >
-								<p>{{ item }} <btn class='btn btn-sm btn-primary pull-right' ng-click='addToPortfolio($index)'>Add</btn></p>
-							</div>
-						</div>
-					</div>
-					<div class='col-md-6'>
-						<div class='panel panel-default'>
-							<div class='panel-heading'>
-								<h4 class='panel-title'>Portfolio Events</h4>
-							</div>
-							<div class='panel-body'>
-								<table class='table'>
-									<thead>
-										<th>Product/Company</th>
-										<th>Headline</th>
-									</thead>
-									<tbody ng-repeat='event in events'>
-										<tr>
-											<td><a href='#'>{{ event.product }}</a></td>
-											<td><a href='#'>{{ event.headline }}</a></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
+					<div ui-view='results'></div>
+					<div ui-view='events'></div>
 				</div>
 				<div class='row'>
-					<div class='col-md-6'>
-						<div class='panel panel-default'>
-							<div class='panel-heading'>
-								<h4 class='panel-title'>Portfolio Companies</h4>
-							</div>
-							<div class='panel-body' ng-repeat='company in companies'>	
-								<p>{{ company }} <btn class='btn btn-sm btn-warning pull-right' ng-click='removeFromPortfolio($index)'>Delete</btn></p>
-							</div>
-						</div>
-					</div>
-					<div class='col-md-6'>
-						<div class='panel panel-default'>
-							<div class='panel-heading'>
-								<h4 class='panel-title'>Portfolio Drugs</h4>
-							</div>
-							<div class='panel-body' ng-repeat='drug in drugs'>		
-								<p>{{ drug }}<btn class='btn btn-sm btn-warning pull-right' ng-click='removeDrugFromPortfolio($index)'>Delete</btn></p>
-							</div>
-						</div>
-					</div>
+					<div ui-view='companies'></div>
+					<div ui-view='drugs'></div>
 				</div>
 			</div>
 		</div>	

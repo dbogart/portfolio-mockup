@@ -1,0 +1,10 @@
+<div class='col-md-6'>
+	<div class='panel panel-default'>
+		<div class='panel-heading'>
+			<h4 class='panel-title'>Portfolio Drugs</h4>
+		</div>
+		<div class='panel-body' ng-repeat='drug in drugs'>		
+			<p>{{ drug }}<btn class='btn btn-sm btn-warning pull-right' ng-click='removeDrugFromPortfolio($index)'>Delete</btn></p>
+		</div>
+	</div>
+</div>	
