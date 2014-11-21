@@ -130,7 +130,6 @@ angular.module('portfolioMockupApp.services', [])
 
     return {
         results: function(portId) { 
-            console.log(portId);
 
             if (portId === '1') {
                 return results1; 
@@ -150,7 +149,6 @@ angular.module('portfolioMockupApp.services', [])
             }
         },
         companies: function(portId) { 
-            console.log(portId);
 
             if (portId === '1') {
                 return companies1; 
@@ -170,7 +168,6 @@ angular.module('portfolioMockupApp.services', [])
             }
         },
         drugs: function(portId) { 
-            console.log(portId);
 
             if (portId === '1') {
                 return drugs1; 
@@ -190,7 +187,6 @@ angular.module('portfolioMockupApp.services', [])
             }
         },
         events: function(portId) { 
-            console.log(portId);
 
             if (portId === '1') {
                 return events1; 

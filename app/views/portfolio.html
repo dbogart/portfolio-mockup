@@ -6,27 +6,29 @@
 				<div ng-controller="ModalCtrl" class='create-new-frame'>
 				    <script type="text/ng-template" id="myModalContent.html">
 				        <div class="modal-header">
-				            <h3 class="modal-title">New Portfolio</h3>
-				        </div>
-				        <div class="modal-body">
-					        <input class='form-control' ng-model='portName' placeholder='Portfolio name' />
-							<br>
-							<div class="btn-group">
-							    <label class="btn btn-primary" ng-model="radioModel" ng-click='groupSelection = true' btn-radio="'Left'">Group</label>
-							    <label class="btn btn-primary" ng-model="radioModel" ng-click='groupSelection = false' btn-radio="'Right'">Private</label>
-							</div>
-							<br><br>
-							<div ng-show='groupSelection'>
-								  <select ng-model="selectedGroup" ng-options="group.label for group in groupOptions" label='Select a group'>
-								  	<option value="">Select a group</option>
-								  </select>
-								  	<a href='' class='glyphicon glyphicon-plus-sign new-group'></a>
-							</div>	        	
-				        </div>
-				        <div class="modal-footer">
-				            <button class="btn btn-primary" ng-click="ok()">Create</button>
-				            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-				        </div>
+					        <h3 class="modal-title">New Portfolio</h3>
+					        </div>
+					        <form name='eventForm'>
+					        <div class="modal-body">
+						        <input class='form-control' ng-model='portName' placeholder='Portfolio name' ng-required='true' />
+								<br>
+								<div class="btn-group">
+								    <label class="btn btn-primary" ng-model="radioModel" ng-click='groupSelection = true' btn-radio="'Left'">Group</label>
+								    <label class="btn btn-primary" ng-model="radioModel" ng-click='groupSelection = false' btn-radio="'Right'">Private</label>
+								</div>
+								<br><br>
+								<div ng-show='groupSelection'>
+									<select ng-model="selectedGroup" ng-options="group.label for group in groupOptions" label='Select a group'>
+										<option value="">Select a group</option>
+									</select>
+									<a href='' class='glyphicon glyphicon-plus-sign new-group'></a>
+								</div>	  
+					        </div>
+					        <div class="modal-footer">
+					            <button class="btn btn-primary" ng-click="ok()" ng-disabled="eventForm.$invalid">Create</button>
+					            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+					        </div>
+				    	</form>
 				    </script>
 				    <span class="btn btn-sm btn-primary create-new" ng-click="open('sm')">Create New</span>
 				</div>

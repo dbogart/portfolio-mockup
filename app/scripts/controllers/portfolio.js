@@ -37,7 +37,7 @@ angular.module('portfolioMockupApp')
         console.log('test');
     };
 
-    //Create new portfolio tab
+    //create new portfolio tab
     $scope.$on('portfolioCreated', function(){
         
         $log.info('....portfolioCtrl notified of portfolioCreated event');

@@ -43,14 +43,12 @@ angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($
     ];
 
     $scope.ok = function () {
-        /***
-        * 
-        * check and validation logic would go in here
-        *
-        **/ 
+
+        //check for duplicate portfolio name
+        portfolioCreateService.checkDupes($scope.portName);
+
         $log.info('portfolioModalCtrl submitting new portfolio to portfolioCreateService');
         portfolioCreateService.createPortfolio($scope.portName, $scope.selectedGroup.label );
-
         $modalInstance.close($scope.selected.item);
     };
 

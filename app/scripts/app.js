@@ -20,7 +20,8 @@ app = angular
     'ui.bootstrap',
     'xeditable',
     'ui.router',
-    'portfolioMockupApp.services'
+    'portfolioMockupApp.services',
+    'portfolioMockupApp.directives'
   ])
 	.config(function($stateProvider, $urlRouterProvider) {
 
