@@ -33,12 +33,13 @@ angular.module('portfolioMockupApp')
         $scope.results.push($scope.drugs[index]);
         $scope.drugs.splice(index, 1);
     };
+
 	$scope.tabs = [
-		{ title:'Portfolio 1', id: '1', active: false },
-		{ title:'Portfolio 2', id: '2', active: false },
-		{ title:'Portfolio 3', id: '3', active: false },
-		{ title:'Portfolio 4', id: '4', active: false },
-		{ title:'Portfolio 5', id: '5', active: false },
+		{ title:'Portfolio 1', id: '1', group: 'Marketing', active: false },
+		{ title:'Portfolio 2', id: '2', group: 'Private', active: false },
+		{ title:'Portfolio 3', id: '3', group: 'Outcomes', active: false },
+		{ title:'Portfolio 4', id: '4', group: 'PV', active: false },
+		{ title:'Portfolio 5', id: '5', group: 'PV', active: false }
 	];
 
     //function loops through each tab to check if current state matches that tab. if so, tab is set to active, which reflects in view

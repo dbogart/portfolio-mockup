@@ -3,20 +3,43 @@
 		<div class='panel panel-default'>
 			<div class='panel-heading panel-bg'>
 				<h1 class='port-title'>Portfolios</h1>
+				<div ng-controller="ModalCtrl" class='create-new-frame'>
+				    <script type="text/ng-template" id="myModalContent.html">
+				        <div class="modal-header">
+				            <h3 class="modal-title">New Portfolio</h3>
+				        </div>
+				        <div class="modal-body">
+					        <input class='form-control' placeholder='Portfolio name' />
+							<br>
+							<div class="btn-group">
+							    <label class="btn btn-primary" ng-model="radioModel" ng-click='groupSelection = true' btn-radio="'Left'">Group</label>
+							    <label class="btn btn-primary" ng-model="radioModel" ng-click='groupSelection = false' btn-radio="'Right'">Private</label>
+							</div>
+							<br><br>
+							<div ng-show='groupSelection'>
+								<select ng-style="dropdown-menu">
+									<option ng-repeat='group in groups' ng-selected="">{{ group.name }}</option>
+								</select>
+							</div>	        	
+				        </div>
+				        <div class="modal-footer">
+				            <button class="btn btn-primary" ng-click="ok()">Create</button>
+				            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+				        </div>
+				    </script>
+				    <span class="btn btn-sm btn-primary create-new" ng-click="open('sm')">Create New</span>
+				</div>
 			</div>
 			<div class='panel-body'>
 				<tabset>
 					<tab ng-repeat="tab in tabs" heading="{{ tab.title }}" ui-sref="portfolio.port({portId: tab.id})" active="tab.active">
-						<h3><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
+						<h3 class='port-title'><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
+						<span class ='label label-success group-tag'>{{ tab.group }}</span>
+						<button class='btn btn-primary btn-md view-profile pull-right'>View Profile</button>
 					</tab>
 				</tabset>
-				<br>
-				<div class='row'>
-					<div class='col-md-6'>
-						<input ng-model='search' class='form-control' placeholder='Select Drugs/Companies/Subsidiaries to add to this Portfolio'>
-					</div>
-				</div>
-				<br>
+				<div ui-view='search'></div>
+				<div ui-view='create'></div>		
 				<div class='row'>
 					<div ui-view='results'></div>
 					<div ui-view='events'></div>

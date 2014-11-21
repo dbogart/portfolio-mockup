@@ -49,6 +49,17 @@ app = angular
 	        },
 	        'drugs': {
 	            templateUrl: 'partials/drugs.html'
+	        },
+	        'search': {
+	            templateUrl: 'partials/search.html'
+	        }
+	    } 
+	})
+	.state('portfolio.create', {
+	    url: '/create',
+	    views: {
+	        'create': {
+	            templateUrl: 'partials/create.html'
 	        }
 	    } 
 	});
