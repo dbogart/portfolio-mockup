@@ -54,14 +54,6 @@ app = angular
 	            templateUrl: 'partials/search.html'
 	        }
 	    } 
-	})
-	.state('portfolio.create', {
-	    url: '/create',
-	    views: {
-	        'create': {
-	            templateUrl: 'partials/create.html'
-	        }
-	    } 
 	});
 	})
 	.run(function(editableOptions) {

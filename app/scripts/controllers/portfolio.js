@@ -8,7 +8,7 @@
  * Controller of the portfolioMockupApp
  */
 angular.module('portfolioMockupApp')
-  .controller('PortfolioCtrl', function ($scope, portService, $stateParams, $state) {
+  .controller('PortfolioCtrl', function ($scope, portService, $log, $stateParams, $state, $rootScope, portfolioCreateService) {
     
     $scope.portId = $stateParams.portId;
 
@@ -33,13 +33,26 @@ angular.module('portfolioMockupApp')
         $scope.results.push($scope.drugs[index]);
         $scope.drugs.splice(index, 1);
     };
+    $scope.addNewPortfolio = function () {
+        console.log('test');
+    };
+
+    //Create new portfolio tab
+    $scope.$on('portfolioCreated', function(){
+        
+        $log.info('....portfolioCtrl notified of portfolioCreated event');
+        var _newTab = portfolioCreateService.getCreatedPortfolio();
+        
+        $scope.tabs.push(_newTab);
+        portfolioCreateService.clearCreatedPortfolio();
+    });
 
 	$scope.tabs = [
-		{ title:'Portfolio 1', id: '1', group: 'Marketing', active: false },
-		{ title:'Portfolio 2', id: '2', group: 'Private', active: false },
-		{ title:'Portfolio 3', id: '3', group: 'Outcomes', active: false },
-		{ title:'Portfolio 4', id: '4', group: 'PV', active: false },
-		{ title:'Portfolio 5', id: '5', group: 'PV', active: false }
+		{ title:'Portfolio 1', id: '1', group: 'Marketing', active: false, groupLabel: 'label-success' },
+		{ title:'Portfolio 2', id: '2', group: 'Private', active: false, groupLabel: 'label-danger' },
+		{ title:'Portfolio 3', id: '3', group: 'Outcomes', active: false, groupLabel: 'label-success' },
+		{ title:'Portfolio 4', id: '4', group: 'PV', active: false, groupLabel: 'label-success' },
+		{ title:'Portfolio 5', id: '5', group: 'Private', active: false, groupLabel: 'label-danger' }
 	];
 
     //function loops through each tab to check if current state matches that tab. if so, tab is set to active, which reflects in view

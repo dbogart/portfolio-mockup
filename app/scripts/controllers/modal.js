@@ -29,60 +29,74 @@ angular.module('portfolioMockupApp').controller('ModalCtrl', function ($scope, $
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, $log) {
+angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, $log, portfolioCreateService) {
 
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
 
-  $scope.ok = function () {
-    $modalInstance.close($scope.selected.item);
-  };
+    $scope.groupOptions = [
+        { label: 'Marketing' },
+        { label: 'Outcomes' },
+        { label: 'Pharmco Vigilance'}
+    ];
 
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
+    $scope.ok = function () {
+        /***
+        * 
+        * check and validation logic would go in here
+        *
+        **/ 
+        $log.info('portfolioModalCtrl submitting new portfolio to portfolioCreateService');
+        portfolioCreateService.createPortfolio($scope.portName, $scope.selectedGroup.label );
 
-  //radio buttons
-  $scope.singleModel = 1;
+        $modalInstance.close($scope.selected.item);
+    };
 
-  $scope.radioModel = 'Middle';
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
 
-  $scope.checkModel = {
-    left: false,
-    middle: true,
-    right: false
-  };
+    //radio buttons
+    $scope.singleModel = 1;
 
-  //dropdown
+    $scope.radioModel = 'Middle';
 
-  $scope.groupModel = 'Selected group';
+    $scope.checkModel = {
+        left: false,
+        middle: true,
+        right: false
+    };
 
-  $scope.myStyle = {
+    //dropdown
+
+    $scope.groupModel = 'Selected group';
+
+    $scope.myStyle = {
      background: '#000000'
-  };
+    };
 
-  $scope.groups = [
-    { name: 'Pharmaco Vigilance' },
-    { name: 'Marketing' },
-    { name: 'Outcomes' }
-  ];
+    $scope.groups = [
+        { name: 'Pharmaco Vigilance' },
+        { name: 'Marketing' },
+        { name: 'Outcomes' }
+    ];
 
-  // $scope.selected = function
+    // $scope.selected = function
 
-  $scope.status = {
-    isopen: false
-  };
+    $scope.status = {
+        isopen: false
+    };
 
-  $scope.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
+    $scope.toggled = function(open) {
+        $log.log('Dropdown is now: ', open);
+    };
 
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
+    $scope.toggleDropdown = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.status.isopen = !$scope.status.isopen;
+    };
 
 });
