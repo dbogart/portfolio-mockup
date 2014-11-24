@@ -2,7 +2,7 @@
 	<div class='col-md-12'>
 		<div class='panel panel-default'>
 			<div class='panel-heading panel-bg'>
-				<h1 class='port-title'>Portfolios</h1>
+				<h1 class='port-title custom-inline'>Portfolios</h1>
 				<div ng-controller="ModalCtrl" class='create-new-frame'>
 				    <script type="text/ng-template" id="myModalContent.html">
 				        <div class="modal-header">
@@ -36,7 +36,7 @@
 			<div class='panel-body'>
 				<tabset>
 					<tab ng-repeat="tab in tabs" heading="{{ tab.title }}" ui-sref="portfolio.port({portId: tab.id})" active="tab.active">
-						<h3 class='port-title'><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
+						<h3 class='port-title custom-inline'><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
 						<span class='label group-tag {{tab.groupLabel}}'>{{ tab.group }}</span>
 						<button class='btn btn-primary btn-md view-profile pull-right'>View Profile</button>
 					</tab>
