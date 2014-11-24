@@ -26,7 +26,7 @@ app = angular
 	.config(function($stateProvider, $urlRouterProvider) {
 
   	// For any unmatched url, redirect to /portfolio
-	$urlRouterProvider.otherwise('/portfolio');
+	$urlRouterProvider.otherwise('/portfolio/port/1');
 
 	// States
 	$stateProvider

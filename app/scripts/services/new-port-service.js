@@ -4,6 +4,7 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
     var service = {};
     service.newTab = {};
     var currentTabs = [];
+    var notUnique = false;
     
     service.createPortfolio = function(portName, portGroup){
         this.newTab.title = portName;
@@ -33,11 +34,12 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
         // how can we access tabs.title to check for duplicates?
         for(var i = 0, len = currentTabs.length; i < len; i++) {
             if (currentTabs[i] === portName) {
-                window.alert('Duplicate portfolio name'); 
-                break;
-            } else {                
+                notUnique = true;
+                return notUnique;
+            } else {
+                notUnique = false;                
                 $log.info('unique portfolio name detected');
-            }
+            }            
         }
     };
     

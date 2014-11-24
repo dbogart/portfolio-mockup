@@ -29,7 +29,7 @@ angular.module('portfolioMockupApp').controller('ModalCtrl', function ($scope, $
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $modal service used above.
 
-angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, $log, portfolioCreateService) {
+angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, $log, items, portfolioCreateService) {
 
     $scope.items = items;
     $scope.selected = {
@@ -42,11 +42,12 @@ angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($
         { label: 'Pharmco Vigilance'}
     ];
 
+    //check for duplicate portfolio name        
+    $scope.$watch('portName', function() {
+        $scope.notUnique = portfolioCreateService.checkDupes($scope.portName);
+    });
+
     $scope.ok = function () {
-
-        //check for duplicate portfolio name
-        portfolioCreateService.checkDupes($scope.portName);
-
         $log.info('portfolioModalCtrl submitting new portfolio to portfolioCreateService');
         portfolioCreateService.createPortfolio($scope.portName, $scope.selectedGroup.label );
         $modalInstance.close($scope.selected.item);
