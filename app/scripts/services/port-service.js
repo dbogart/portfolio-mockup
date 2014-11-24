@@ -8,10 +8,15 @@ angular.module('portfolioMockupApp.services', [])
             'Arava',
             'Avacor',
             'Ambien',
-            'Abello group',
+            'Abello Group',
             'Alcaine',
             'Alcaftadine',
-            'Avagard'
+            'Avagard',
+            'Avastin',
+            'Avanthi, Inc.',
+            'Avandia',
+            'Avage',
+            'Avalide'
         ];
 
     var results2 = [
@@ -45,7 +50,9 @@ angular.module('portfolioMockupApp.services', [])
     var companies1 = [
             'Novartis AG',
             'Mylan, Inc.',
-            'Hospira, Inc.'
+            'Hospira, Inc.',
+            'Aurobindo Pharma Ltd.',
+            'Endo International plc'
         ];
 
     var companies2 = [
@@ -75,7 +82,11 @@ angular.module('portfolioMockupApp.services', [])
     var drugs1 = [
             'Enbrel',
             'Humira',
-            'Tysari'
+            'Tysari',
+            'Clolar',
+            'Effexor',
+            'Lexapro',
+            'Paxil'
         ];
 
     var drugs2 = [

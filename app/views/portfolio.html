@@ -40,10 +40,10 @@
 					<tab ng-repeat="tab in tabs" heading="{{ tab.title }}" ui-sref="portfolio.port({portId: tab.id})" active="tab.active">
 						<h3 class='port-title custom-inline'><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
 						<span class='label group-tag {{tab.groupLabel}}'>{{ tab.group }}</span>
-						<button class='btn btn-primary btn-md view-profile pull-right'>View Profile</button>
+
+						<button class='btn btn-danger btn-lg view-profile pull-right'><i class="fa fa-folder-open"></i> Launch Portfolio</button>
 					</tab>
 				</tabset>
-				<div ui-view='search'></div>
 				<div ui-view='create'></div>		
 				<div ui-view='results'></div>
 				<div ui-view='companies'></div>
