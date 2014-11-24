@@ -7,6 +7,10 @@ angular.module('portfolioMockupApp.services', [])
             'Actavis',
             'Arava',
             'Avacor',
+            'Ambien',
+            'Abello group',
+            'Alcaine',
+            'Alcaftadine',
             'Avagard'
         ];
 
