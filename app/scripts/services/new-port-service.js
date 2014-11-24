@@ -9,7 +9,14 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
     service.createPortfolio = function(portName, portGroup){
         this.newTab.title = portName;
         this.newTab.group = portGroup;
-        this.newTab.groupLabel = 'label-success';
+
+        //private groups given red tags
+        if (portGroup === 'Private') {
+            this.newTab.groupLabel = 'label-danger';
+        } else {
+            this.newTab.groupLabel = 'label-success';
+        }
+        
         this.id = 10; // need a fn here to get max current id I guess.
 
         $log.info('...portfolioCreateService broadcasting that portFolio created');

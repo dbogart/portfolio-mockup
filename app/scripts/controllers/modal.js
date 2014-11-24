@@ -49,7 +49,10 @@ angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($
 
     $scope.ok = function () {
         $log.info('portfolioModalCtrl submitting new portfolio to portfolioCreateService');
-        portfolioCreateService.createPortfolio($scope.portName, $scope.selectedGroup.label );
+        if ($scope.groupSelection === false) {
+            $scope.selectedGroup =  { label: 'Private' };
+        }
+        portfolioCreateService.createPortfolio($scope.portName, $scope.selectedGroup.label);
         $modalInstance.close($scope.selected.item);
     };
 
