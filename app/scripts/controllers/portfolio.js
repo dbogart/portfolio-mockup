@@ -8,7 +8,7 @@
  * Controller of the portfolioMockupApp
  */
 angular.module('portfolioMockupApp')
-  .controller('PortfolioCtrl', function ($scope, portService, $log, $stateParams, $state, $rootScope, portfolioCreateService) {
+  .controller('PortfolioCtrl', function ($scope, $log, $stateParams, $state, $rootScope, portService, portfolioCreateService) {
     
     $scope.portId = $stateParams.portId;
 
@@ -59,5 +59,11 @@ angular.module('portfolioMockupApp')
     $scope.tabs.forEach(function (tab) {
          tab.active = ($state.params.portId === tab.id);
     });
+
+    $scope.tabs.forEach(function (tab) {
+        var tabName = tab.title;
+        portfolioCreateService.setCurrentPortfolio(tabName);
+    });
+
 });
 
