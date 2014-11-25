@@ -29,21 +29,25 @@
 				</div>
 			</div>
 			<div class='panel-body'>
+				<div class='col-md-11 tabset-container'>
 				<tabset>
 					<tab ng-repeat="tab in tabs" heading="{{ tab.title }}" ui-sref="portfolio.port({portId: tab.id})" active="tab.active" disable="tab.disabled">
 						<h3 class='port-title custom-inline'><a editable-text='tab.title'>{{ tab.title || "empty" }}</a></h3>
 						<span class='label group-tag {{tab.groupLabel}}'>{{ tab.group }}</span>
-
 						<button class='btn btn-danger btn-lg view-profile pull-right'><i class="fa fa-folder-open"></i> Launch Portfolio</button>
 					</tab>
+				</div>
+				<div class='col-md-1 pull-right dropdown-container'>
+				</tabset>
+				<tabset class='dropdown-tab'>
 					<!-- dropdown tab -->
-					<tab class='pull-right' class='ng-isolate-scope disabled'>     
+					<tab class='pull-right' class='ng-isolate-scope'>     
 						<tab-heading>
 						<div ng-controller="DropdownCtrl">
 							<!-- Simple dropdown -->
 							<span class="dropdown" dropdown on-toggle="toggled(open)">
 							  <a href class="dropdown-toggle" dropdown-toggle>
-							    <i class="fa fa-ellipsis-h"></i>
+							    <i class="fa fa-align-justify"></i>
 							  </a>
 							  <ul class="dropdown-menu">
 							    <li ng-repeat="choice in items">
@@ -55,6 +59,7 @@
 						</tab-heading>
 					</tab>
 				</tabset>
+				</div>
 				<div ui-view='create'></div>		
 				<div ui-view='results'></div>
 				<div ui-view='companies'></div>
