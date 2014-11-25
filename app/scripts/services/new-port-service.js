@@ -5,11 +5,19 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
     service.newTab = {};
     var currentTabs = [];
     var notUnique = false;
-    
+    var currentMaxId;
+
+    service.setMaxId = function (maxId) {
+        currentMaxId = parseInt(maxId);
+        console.log(currentMaxId);
+    };
+
     service.createPortfolio = function(portName, portGroup){
         this.newTab.title = portName;
         this.newTab.group = portGroup;
-
+        console.log(currentMaxId);
+        this.newTab.id = currentMaxId + 1;   
+        
         //private groups given red tags
         if (portGroup === 'Private') {
             this.newTab.groupLabel = 'label-danger';

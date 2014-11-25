@@ -37,15 +37,9 @@ angular.module('portfolioMockupApp')
         console.log('test');
     };
 
-    //create new portfolio tab
-    $scope.$on('portfolioCreated', function(){
-        
-        $log.info('....portfolioCtrl notified of portfolioCreated event');
-        var _newTab = portfolioCreateService.getCreatedPortfolio();
-        
-        $scope.tabs.push(_newTab);
-        portfolioCreateService.clearCreatedPortfolio();
-    });
+    $scope.maxId = function () {
+        portfolioCreateService.setMaxId($scope.tabs[$scope.tabs.length - 1].id);
+    };
 
 	$scope.tabs = [
 		{ title:'Portfolio 1', id: '1', group: 'Group', active: false, groupLabel: 'label-success' },
@@ -54,6 +48,20 @@ angular.module('portfolioMockupApp')
 		{ title:'Portfolio 4', id: '4', group: 'Group', active: false, groupLabel: 'label-success' },
 		{ title:'Portfolio 5', id: '5', group: 'Private', active: false, groupLabel: 'label-danger' }
 	];
+
+    //set max Id
+    $scope.maxId();
+
+    //create new portfolio tab
+    $scope.$on('portfolioCreated', function(){
+        
+        $log.info('....portfolioCtrl notified of portfolioCreated event');
+        var _newTab = portfolioCreateService.getCreatedPortfolio();
+        
+        $scope.tabs.push(_newTab);
+        portfolioCreateService.clearCreatedPortfolio();
+        $scope.maxId();
+    });
 
     //limit tabset to 9 tabs max
     $scope.quantity = 9;
@@ -67,6 +75,7 @@ angular.module('portfolioMockupApp')
         var tabName = tab.title;
         portfolioCreateService.setCurrentPortfolio(tabName);
     });
+
 
 });
 
