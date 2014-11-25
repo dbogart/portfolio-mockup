@@ -18,19 +18,27 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
-      'app/scripts/app.js',
-      'app/scripts/**/*.js',
+      'bower_components/angular-bootstrap/ui-bootstrap.js',
+      'bower_components/angular-xeditable/dist/js/xeditable.js',
+      'bower_components/ui-router/release/angular-ui-router.js',
+      
       'test/mock/**/*.js',
       'test/spec/**/*.js',
-      'node_modules/angular/angular.js',
+
+      'app/scripts/services/port-service.js',
+      'app/scripts/services/new-port-service.js',
+      'app/scripts/app.js',
+      'app/scripts/services/*.js',
+      'app/scripts/directives/*.js',
+      'app/scripts/controllers/*.js',
       'node_modules/angular-mocks/angular-mocks.js',
       './src/**/*.js',
       './test/**/*.js'

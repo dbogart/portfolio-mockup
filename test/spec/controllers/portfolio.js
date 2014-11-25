@@ -3,13 +3,14 @@
 describe('Controller: PortfolioCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('portfolioMockupApp', 'portfolioMockupApp.services'));
-
+  beforeEach(module('portfolioMockupApp'));
+  beforeEach(module('portfolioMockupApp.services'));
+  
   var PortfolioCtrl,
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $scope, $log, $stateParams, $state, $rootScope, portService, portfolioCreateService) {
+  beforeEach(inject(function ($controller, $scope, $log, $stateParams, $state, $rootScope) {
     scope = $rootScope.$new();
     PortfolioCtrl = $controller('PortfolioCtrl', {
       $scope: scope
