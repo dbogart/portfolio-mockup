@@ -4,18 +4,17 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
     var service = {};
     service.newTab = {};
     var currentTabs = [];
+    var dropdownTabs = [];
     var notUnique = false;
     var currentMaxId;
 
     service.setMaxId = function (maxId) {
         currentMaxId = parseInt(maxId);
-        console.log(currentMaxId);
     };
 
     service.createPortfolio = function(portName, portGroup){
         this.newTab.title = portName;
         this.newTab.group = portGroup;
-        console.log(currentMaxId);
         this.newTab.id = currentMaxId + 1;   
         
         //private groups given red tags
@@ -43,6 +42,14 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
 
     service.setCurrentPortfolio = function(tabName) {
         currentTabs.push(tabName);
+    };
+
+    service.passTab = function(tab) {
+        dropdownTabs.push(tab);
+    };
+
+    service.getDropdownTabs = function() {
+        return dropdownTabs;
     };
 
     service.checkDupes = function(portName) {

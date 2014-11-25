@@ -1,14 +1,7 @@
 'use strict';
 
-angular.module('portfolioMockupApp').controller('DropdownCtrl', function ($scope, $log) {
-  $scope.items = [
-    'Additional Portfolio',
-    'Additional Portfolio 2',
-    'Additional Portfolio 3',
-    'Additional Portfolio 4',
-    'Additional Portfolio 5',
-    'Additional Portfolio 6'
-  ];
+angular.module('portfolioMockupApp').controller('DropdownCtrl', function ($scope, $log, portfolioCreateService) {
+  $scope.items = portfolioCreateService.getDropdownTabs();
 
   $scope.status = {
     isopen: false

@@ -18,7 +18,6 @@ angular.module('portfolioMockupApp')
         $scope.companies = portService.companies($state.params.portId);
         $scope.drugs = portService.drugs($state.params.portId);
         $scope.events = portService.events($state.params.portId);
-
     });
         
 	$scope.addToPortfolio = function (index) {
@@ -41,6 +40,13 @@ angular.module('portfolioMockupApp')
         portfolioCreateService.setMaxId($scope.tabs[$scope.tabs.length - 1].id);
     };
 
+    $scope.collapsedTabs = function (tab) {
+        if ($scope.tabs.length > 3) {
+            portfolioCreateService.passTab(tab);
+            console.log('passed '+tab);
+        }
+    };
+
 	$scope.tabs = [
 		{ title:'Portfolio 1', id: '1', group: 'Group', active: false, groupLabel: 'label-success' },
 		{ title:'Portfolio 2', id: '2', group: 'Private', active: false, groupLabel: 'label-danger' },
@@ -58,8 +64,16 @@ angular.module('portfolioMockupApp')
         $log.info('....portfolioCtrl notified of portfolioCreated event');
         var _newTab = portfolioCreateService.getCreatedPortfolio();
         
+        //push new tab to the tabs collection
         $scope.tabs.push(_newTab);
+
+        //push tab to dropdown if it is #10 or more
+        $scope.collapsedTabs(_newTab);
+
+        //clear tab vars
         portfolioCreateService.clearCreatedPortfolio();
+
+        //set the new max id
         $scope.maxId();
     });
 
@@ -75,7 +89,6 @@ angular.module('portfolioMockupApp')
         var tabName = tab.title;
         portfolioCreateService.setCurrentPortfolio(tabName);
     });
-
 
 });
 
