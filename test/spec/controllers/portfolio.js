@@ -3,20 +3,20 @@
 describe('Controller: PortfolioCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('portfolioMockupApp'));
+  beforeEach(module('portfolioMockupApp', 'portfolioMockupApp.services'));
 
   var PortfolioCtrl,
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $scope, $log, $stateParams, $state, $rootScope, portService, portfolioCreateService) {
     scope = $rootScope.$new();
     PortfolioCtrl = $controller('PortfolioCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should have a list of 5 tabs by default', function () {
+    expect(scope.tabs.length).toBe(5);
   });
 });

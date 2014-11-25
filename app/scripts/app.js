@@ -53,6 +53,9 @@ app = angular
 	        },
 	        'search': {
 	            templateUrl: 'partials/search.html'
+	        },
+	        'dropdown': {
+	            templateUrl: 'partials/dropdown.html'
 	        }
 	    } 
 	});

@@ -55,6 +55,9 @@ angular.module('portfolioMockupApp')
 		{ title:'Portfolio 5', id: '5', group: 'Private', active: false, groupLabel: 'label-danger' }
 	];
 
+    //limit tabset to 9 tabs max
+    $scope.quantity = 9;
+
     //function loops through each tab to check if current state matches that tab. if so, tab is set to active, which reflects in view
     $scope.tabs.forEach(function (tab) {
         tab.active = ($state.params.portId === tab.id);

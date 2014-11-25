@@ -1,0 +1,23 @@
+<div class='col-sm-1 col-md-1 col-lg-1 pull-right dropdown-container'>
+<tabset class='dropdown-tab'>
+	<!-- dropdown tab -->
+	<tab class='pull-right' class='ng-isolate-scope'>     
+		<tab-heading>
+		<div ng-controller="DropdownCtrl">
+			<!-- Simple dropdown -->
+			<span class="dropdown" dropdown on-toggle="toggled(open)">
+			  <a href class="dropdown-toggle" dropdown-toggle>
+			    <i class="fa fa-align-justify"></i>
+			  </a>
+			  <ul class="dropdown-menu">
+			    <li ng-repeat="choice in items">
+			      <a href>{{choice}}</a>
+			    </li>
+			  </ul>
+			</span>
+		</div>
+		</tab-heading>
+	</tab>
+</tabset>
+<button class='btn btn-danger btn-lg launch-portfolio pull-right'><i class="fa fa-folder-open"></i> Launch Portfolio</button>
+</div>
