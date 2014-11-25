@@ -10,8 +10,13 @@
 		<div class='panel-heading'>
 			<h4 class='panel-title'>Search Results</h4>
 		</div>
-		<div class='panel-body' ng-repeat='result in results | filter: search' >
-			<p>{{ result }} <btn class='btn btn-sm btn-primary pull-right' ng-click='addToPortfolio($index)'>Add</btn></p>
-		</div>
+		<table class="table table-striped">
+			<tbody>
+				<tr class='panel-body' ng-repeat='result in results | filter: search' >
+					<td>{{ result }}</td>
+					<td><btn class='btn btn-sm btn-primary pull-right' ng-click='addToPortfolio($index)'>Add</btn></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>

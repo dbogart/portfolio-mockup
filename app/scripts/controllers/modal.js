@@ -36,12 +36,6 @@ angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($
         item: $scope.items[0]
     };
 
-    $scope.groupOptions = [
-        { label: 'Marketing' },
-        { label: 'Outcomes' },
-        { label: 'Pharmco Vigilance'}
-    ];
-
     //check for duplicate portfolio name        
     $scope.$watch('portName', function() {
         $scope.notUnique = portfolioCreateService.checkDupes($scope.portName);
@@ -51,6 +45,8 @@ angular.module('portfolioMockupApp').controller('ModalInstanceCtrl', function ($
         $log.info('portfolioModalCtrl submitting new portfolio to portfolioCreateService');
         if ($scope.groupSelection === false) {
             $scope.selectedGroup = { label: 'Private' };
+        } else {
+            $scope.selectedGroup = { label: 'Group' };
         }
         portfolioCreateService.createPortfolio($scope.portName, $scope.selectedGroup.label);
         $modalInstance.close($scope.selected.item);

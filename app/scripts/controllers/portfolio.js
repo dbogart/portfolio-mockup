@@ -48,16 +48,16 @@ angular.module('portfolioMockupApp')
     });
 
 	$scope.tabs = [
-		{ title:'Portfolio 1', id: '1', group: 'Marketing', active: false, groupLabel: 'label-success' },
+		{ title:'Portfolio 1', id: '1', group: 'Group', active: false, groupLabel: 'label-success' },
 		{ title:'Portfolio 2', id: '2', group: 'Private', active: false, groupLabel: 'label-danger' },
-		{ title:'Portfolio 3', id: '3', group: 'Outcomes', active: false, groupLabel: 'label-success' },
-		{ title:'Portfolio 4', id: '4', group: 'PV', active: false, groupLabel: 'label-success' },
+		{ title:'Portfolio 3', id: '3', group: 'Group', active: false, groupLabel: 'label-success' },
+		{ title:'Portfolio 4', id: '4', group: 'Group', active: false, groupLabel: 'label-success' },
 		{ title:'Portfolio 5', id: '5', group: 'Private', active: false, groupLabel: 'label-danger' }
 	];
 
     //function loops through each tab to check if current state matches that tab. if so, tab is set to active, which reflects in view
     $scope.tabs.forEach(function (tab) {
-         tab.active = ($state.params.portId === tab.id);
+        tab.active = ($state.params.portId === tab.id);
     });
 
     $scope.tabs.forEach(function (tab) {
