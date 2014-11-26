@@ -10,7 +10,7 @@
 					        </div>
 					        <form name='eventForm'>
 					        <div class="modal-body">
-						        <input class='form-control' ng-model='portName' placeholder='Portfolio name' ng-required='true' />
+						        <input class='form-control' ng-model='portName' placeholder='Portfolio name' ng-required='true' maxlength="35" />
 						        <span class="help-inline" ng-show="notUnique">Portfolio name already used</span>
 								<br>
 								<div ng-init="radioModel = 'Right'; groupSelection = false" class="btn-group">

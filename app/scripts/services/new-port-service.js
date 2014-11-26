@@ -53,9 +53,9 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
 
     service.dropdownStatus = function(totalTabs) {      
         if (totalTabs > 9) {
-            dropdownClass = 'false';
+            dropdownClass = '';
         } else {
-            dropdownClass = 'true';
+            dropdownClass = 'disabled';
         }
         $rootScope.$broadcast('dropdownStatus');
         console.log(dropdownClass);

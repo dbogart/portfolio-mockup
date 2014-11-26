@@ -6,7 +6,7 @@
 		<div ng-controller="DropdownCtrl">
 			<!-- Simple dropdown -->
 			<span class="dropdown" dropdown on-toggle="toggled(open)">
-			  <a href class="dropdown-toggle" dropdown-toggle ng-class="{ 'disabled-dropdown': disableDropdown }">
+			  <a href class="dropdown-toggle {{ disableDropdown }}" dropdown-toggle>
 			    <i class="fa fa-align-justify"></i>
 			  </a>
 			  <ul class="dropdown-menu">
