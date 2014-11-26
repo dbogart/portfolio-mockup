@@ -60,6 +60,14 @@ angular.module('portfolioMockupApp')
     //set max Id
     $scope.maxId();
 
+    //function to create array of portfolio names for uniqueness check
+    $scope.setCurrentPortfolio = function () {
+        $scope.tabs.forEach(function (tab) {
+            var tabName = tab.title;
+            portfolioCreateService.setCurrentPortfolio(tabName);
+        });
+    };
+
     //create new portfolio tab
     $scope.$on('portfolioCreated', function(){
         
@@ -78,6 +86,9 @@ angular.module('portfolioMockupApp')
         //set the new max id
         $scope.maxId();
 
+        //create array of port names for uniqueness check
+        $scope.setCurrentPortfolio(); 
+
         //enable/disable dropdown
         portfolioCreateService.dropdownStatus($scope.tabs.length);
     });
@@ -95,13 +106,11 @@ angular.module('portfolioMockupApp')
     //set active tab on page load
     $scope.setActiveTab();
 
+    //create array of port names on load
+    $scope.setCurrentPortfolio(); 
+
     //enable/disable dropdown
     portfolioCreateService.dropdownStatus($scope.tabs.length);
-
-    $scope.tabs.forEach(function (tab) {
-        var tabName = tab.title;
-        portfolioCreateService.setCurrentPortfolio(tabName);
-    });
 
 });
 
