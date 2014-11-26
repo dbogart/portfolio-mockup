@@ -18,6 +18,9 @@ angular.module('portfolioMockupApp')
         $scope.companies = portService.companies($state.params.portId);
         $scope.drugs = portService.drugs($state.params.portId);
         $scope.events = portService.events($state.params.portId);
+        $scope.setActiveTab();
+        $scope.activeTab = _.findWhere($scope.tabs, {'active': true});
+
     });
         
 	$scope.addToPortfolio = function (index) {
@@ -41,9 +44,8 @@ angular.module('portfolioMockupApp')
     };
 
     $scope.collapsedTabs = function (tab) {
-        if ($scope.tabs.length > 3) {
+        if ($scope.tabs.length > 9) {
             portfolioCreateService.passTab(tab);
-            console.log('passed '+tab);
         }
     };
 
@@ -75,15 +77,26 @@ angular.module('portfolioMockupApp')
 
         //set the new max id
         $scope.maxId();
+
+        //enable/disable dropdown
+        portfolioCreateService.dropdownStatus($scope.tabs.length);
     });
 
     //limit tabset to 9 tabs max
     $scope.quantity = 9;
 
     //function loops through each tab to check if current state matches that tab. if so, tab is set to active, which reflects in view
-    $scope.tabs.forEach(function (tab) {
-        tab.active = ($state.params.portId === tab.id);
-    });
+    $scope.setActiveTab = function () {
+        $scope.tabs.forEach(function (tab) {
+            tab.active = ($state.params.portId === tab.id);
+        });
+    };
+
+    //set active tab on page load
+    $scope.setActiveTab();
+
+    //enable/disable dropdown
+    portfolioCreateService.dropdownStatus($scope.tabs.length);
 
     $scope.tabs.forEach(function (tab) {
         var tabName = tab.title;

@@ -7,6 +7,7 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
     var dropdownTabs = [];
     var notUnique = false;
     var currentMaxId;
+    var dropdownClass = 'test';
 
     service.setMaxId = function (maxId) {
         currentMaxId = parseInt(maxId);
@@ -15,7 +16,7 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
     service.createPortfolio = function(portName, portGroup){
         this.newTab.title = portName;
         this.newTab.group = portGroup;
-        this.newTab.id = currentMaxId + 1;   
+        this.newTab.id = (currentMaxId + 1).toString();   
         
         //private groups given red tags
         if (portGroup === 'Private') {
@@ -23,8 +24,6 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
         } else {
             this.newTab.groupLabel = 'label-success';
         }
-        
-        this.id = 10; // need a fn here to get max current id I guess.
 
         $log.info('...portfolioCreateService broadcasting that portFolio created');
         
@@ -50,6 +49,20 @@ angular.module('portfolioMockupApp.services').factory('portfolioCreateService', 
 
     service.getDropdownTabs = function() {
         return dropdownTabs;
+    };
+
+    service.dropdownStatus = function(totalTabs) {      
+        if (totalTabs > 9) {
+            dropdownClass = 'false';
+        } else {
+            dropdownClass = 'true';
+        }
+        $rootScope.$broadcast('dropdownStatus');
+        console.log(dropdownClass);
+    };
+
+    service.getDropdownClass = function () {
+        return dropdownClass;
     };
 
     service.checkDupes = function(portName) {
