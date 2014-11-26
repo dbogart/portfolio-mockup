@@ -11,7 +11,6 @@ angular.module('portfolioMockupApp')
   .controller('PortfolioCtrl', function ($scope, $log, $stateParams, $state, $rootScope, portService, portfolioCreateService, dataResource) {
     
     $scope.items = {};
-
     $scope.portId = $stateParams.portId;
 
     $scope.refreshItems = function (queryText) {
@@ -25,15 +24,13 @@ angular.module('portfolioMockupApp')
 
     $scope.$on('$stateChangeSuccess', function () {
 
-        $scope.results = portService.results($state.params.portId);
         $scope.companies = portService.companies($state.params.portId);
         $scope.drugs = portService.drugs($state.params.portId);
-        $scope.events = portService.events($state.params.portId);
         $scope.setActiveTab();
         $scope.activeTab = _.findWhere($scope.tabs, {'active': true});
 
     });
-        
+
 	$scope.addToPortfolio = function (index) {
         if ($scope.items[index].thisType === 'Drug') {
             $scope.drugs.push($scope.items[index].thisName);
@@ -127,11 +124,6 @@ angular.module('portfolioMockupApp')
 
     //enable/disable dropdown
     portfolioCreateService.dropdownStatus($scope.tabs.length);
-
-    //custom filter
-    $scope.drugOrCompany = function (item) { 
-        return item.thisType === 'Drug' || item.thisType === 'Company'; 
-    };
 
 });
 

@@ -125,7 +125,7 @@ a.new-group-glyph {
 
 .results-overflow {
      overflow-y: scroll;
-     min-height: 200px;
+     min-height: 421px;
      max-height: 700px;
 }
 
@@ -151,4 +151,22 @@ a.new-group-glyph {
 
 .body-background {
      background-color: #f5f5f5;
+}
+
+.empty-portfolio {
+     text-align: center;
+     padding: 60px 0 60px 0;
+     height: 160px;
+     background-color: #f5f5f5;
+}
+
+.no-results {
+     text-align: center;
+     padding-top: 130px;
+     height: 381px;
+     background-color: #f5f5f5;
+}
+
+.search-bar-row {
+     margin-top: 5px;
 }

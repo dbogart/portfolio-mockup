@@ -5,7 +5,8 @@
 		</div>
 		<table class="table table-striped">
 			<tbody>
-				<tr class='panel-body' ng-repeat='drug in drugs'>		
+				<tr class='panel-body' ng-repeat='drug in drugs'>
+					<div class='empty-portfolio' ng-show='drugs.length === 0'>Add drugs using the search bar in the upper left</div>		
 					<td>{{ drug }}</td>
 					<td><btn class='btn btn-sm btn-warning pull-right' ng-click='removeDrugFromPortfolio($index)'>Delete</btn></td>
 				</tr>

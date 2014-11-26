@@ -6,6 +6,7 @@
 		<table class="table table-striped">
 			<tbody>
 				<tr class='panel-body' ng-repeat='company in companies'>	
+					<div class='empty-portfolio' ng-show='companies.length === 0'>Add companies using the search bar in the upper left</div>
 					<td>{{ company }}</td>
 					<td><btn class='btn btn-sm btn-warning pull-right' ng-click='removeFromPortfolio($index)'>Delete</btn></td>
 				</tr>
