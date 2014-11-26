@@ -6,8 +6,8 @@
 		<div ng-controller="DropdownCtrl">
 			<!-- Simple dropdown -->
 			<span class="dropdown" dropdown on-toggle="toggled(open)">
-			  <a href class="dropdown-toggle {{ dropdownClass }}" dropdown-toggle ng-disabled='{{ disableDropdown }}'>
-			    <i class="fa fa-align-justify {{ dropdownClass }}"></i>
+			  <a href class="dropdown-toggle" dropdown-toggle ng-class="{ 'disabled-dropdown': disableDropdown }">
+			    <i class="fa fa-align-justify"></i>
 			  </a>
 			  <ul class="dropdown-menu">
 			    <li ng-repeat="choice in items">
