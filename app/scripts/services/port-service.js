@@ -180,6 +180,7 @@ angular.module('portfolioMockupApp.services', [])
             else if (portId === '5') {
                 return companies5;
             } else {
+                return [];
             }
         },
         drugs: function(portId) { 
@@ -199,6 +200,7 @@ angular.module('portfolioMockupApp.services', [])
             else if (portId === '5') {
                 return drugs5;
             } else {
+                return [];
             }
         },
         events: function(portId) { 

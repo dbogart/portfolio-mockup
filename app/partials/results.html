@@ -3,7 +3,7 @@
 <br>
 <div class='row'>
 	<div class='col-md-6'>
-		<input ng-model='search' class='form-control' placeholder='Select Drugs/Companies/Subsidiaries to add to this Portfolio'>
+		<input ng-model='searchInput' ng-change='refreshItems(searchInput)' class='form-control' placeholder='Select Drugs/Companies/Subsidiaries to add to this Portfolio'>
 	</div>
 </div>
 <br>
@@ -14,8 +14,8 @@
 		</div>
 		<table class="table table-striped">
 			<tbody>
-				<tr class='panel-body' ng-repeat='result in results | filter: search' >
-					<td>{{ result }}</td>
+				<tr class='panel-body' ng-repeat='item in items | filter: searchInput | filter: drugOrCompany' >
+					<td>{{ item.thisName }}</td>
 					<td><btn class='btn btn-sm btn-primary pull-right' ng-click='addToPortfolio($index)'>Add</btn></td>
 				</tr>
 			</tbody>

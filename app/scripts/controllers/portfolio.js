@@ -8,9 +8,20 @@
  * Controller of the portfolioMockupApp
  */
 angular.module('portfolioMockupApp')
-  .controller('PortfolioCtrl', function ($scope, $log, $stateParams, $state, $rootScope, portService, portfolioCreateService) {
+  .controller('PortfolioCtrl', function ($scope, $log, $stateParams, $state, $rootScope, portService, portfolioCreateService, dataResource) {
     
+    $scope.items = {};
+
     $scope.portId = $stateParams.portId;
+
+    $scope.refreshItems = function (queryText) {
+        if (queryText.length > 2) {
+            var params = {keyword: queryText};          
+            $scope.loading = true;
+            $scope.items = dataResource.query(params);
+            console.log($scope.items);
+        }
+    };
 
     $scope.$on('$stateChangeSuccess', function () {
 
@@ -24,15 +35,20 @@ angular.module('portfolioMockupApp')
     });
         
 	$scope.addToPortfolio = function (index) {
-        $scope.companies.push($scope.results[index]);
-        $scope.results.splice(index, 1);
+        if ($scope.items[index].thisType === 'Drug') {
+            $scope.drugs.push($scope.items[index].thisName);
+        } 
+        else if ($scope.items[index].thisType === 'Company') {
+            $scope.companies.push($scope.items[index].thisName);
+        }
+        $scope.items.splice(index, 1);
     };
 	$scope.removeFromPortfolio = function (index) {
-        $scope.results.push($scope.companies[index]);
+        // $scope.results.push($scope.companies[index]);
         $scope.companies.splice(index, 1);
     };
 	$scope.removeDrugFromPortfolio = function (index) {
-        $scope.results.push($scope.drugs[index]);
+        // $scope.results.push($scope.drugs[index]);
         $scope.drugs.splice(index, 1);
     };
     $scope.addNewPortfolio = function () {
@@ -111,6 +127,11 @@ angular.module('portfolioMockupApp')
 
     //enable/disable dropdown
     portfolioCreateService.dropdownStatus($scope.tabs.length);
+
+    //custom filter
+    $scope.drugOrCompany = function (item) { 
+        return item.thisType === 'Drug' || item.thisType === 'Company'; 
+    };
 
 });
 

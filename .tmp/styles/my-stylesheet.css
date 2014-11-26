@@ -125,11 +125,13 @@ a.new-group-glyph {
 
 .results-overflow {
      overflow-y: scroll;
+     min-height: 200px;
      max-height: 700px;
 }
 
 .portfolio-overflow {
      overflow-y: scroll;
+     min-height: 200px;
      max-height: 500px;
 }
 
