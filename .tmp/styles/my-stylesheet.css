@@ -170,3 +170,7 @@ a.new-group-glyph {
 .search-bar-row {
      margin-top: 5px;
 }
+
+.port-dropdown-menu {
+     left: -140px;
+}
